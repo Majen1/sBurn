@@ -1,0 +1,44 @@
+[project]
+name = "sburn"
+description = "A fungible token implementation following the SIP-010 standard"
+authors = ["Majen"]
+telemetry = false
+requirements = [
+    "SP2PABAF9FTAJYNFZH93XENAJ8FVY99RRM50D2JG9.token-trait"
+]
+costs_version = 2
+
+[contracts.trait-sip010]
+path = "contracts/trait-sip010.clar"
+clarity_version = 2
+epoch = 3.0
+
+[contracts.sburn]
+path = "contracts/sburn.clar"
+clarity_version = 2
+epoch = 3.0
+depends_on = ["trait-sip010"]
+
+[network]
+name = "testnet"
+node_rpc_address = "https://stacks-node-api.testnet.stacks.co"
+
+[accounts.deployer]
+mnemonic = "awkward filter safe sadness idle enrich target prize chimney foam tribe manual consider tortoise cupboard sustain admit volcano innocent chief ocean indoor phrase grow"
+
+[repl.analysis]
+passes = ["check_checker"]
+
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = true
+trusted_caller = false
+callee_filter = false
+
+[project.deployments]
+clarinet = true
+testnet = true
+
+[[project.wallets]]
+name = "deployer"
+mnemonic = "awkward filter safe sadness idle enrich target prize chimney foam tribe manual consider tortoise cupboard sustain admit volcano innocent chief ocean indoor phrase grow"
