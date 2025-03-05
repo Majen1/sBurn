@@ -83,11 +83,6 @@ Maintenance Fee: 0.125% per transfer
     none)          ;; Memo (optional)
 ```
 
-## 🔗 Resources & Links
-
-- 🌐 Website: [https://sburn.xyz](https://sburn.xyz)
-- 💻 GitHub: [Repository link]
-
 
 
 ## 📄 License
