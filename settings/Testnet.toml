@@ -12,7 +12,7 @@ name = "testnet"
 node_rpc_address = "https://stacks-node-api.testnet.stacks.co"
 
 [accounts.deployer]
-mnemonic = "awkward filter safe sadness idle enrich target prize chimney foam tribe manual consider tortoise cupboard sustain admit volcano innocent chief ocean indoor phrase grow"
+mnemonic = "Insert seedphrase here"
 
 [deployment]
 smart-contracts = ["sburn"]
