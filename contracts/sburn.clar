@@ -113,7 +113,7 @@
         name: TOKEN_NAME,
         symbol: TOKEN_SYMBOL,
         decimals: TOKEN_DECIMALS,
-        description: "sBurn is a deflationary token on the Stacks blockchain that implements automatic fee distribution and burn mechanics. With every transfer, a small fee is collected where half is burned permanently and half is distributed to fee recipients, creating a continuously decreasing supply that adds value to long-term holders.",
+         description: "sBurn is a 100% on-chain deflationary token on the Stacks blockchain designed for maximum security and trading efficiency. It implements automatic fee distribution and burn mechanics with no external dependencies. With every transfer, a small fee is collected where half is burned permanently and half is distributed to fee recipients, creating a continuously decreasing supply that adds value to long-term holders.",
         properties: {
             burn-rate: "0.125%",  
             fee-rate: "0.25%",
