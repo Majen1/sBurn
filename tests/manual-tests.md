@@ -37,8 +37,8 @@ Actual:
 ```clarity
 (contract-call? .sburn get-token-uri)
 ```
-Expected: `(ok (some u"https://bafkreicy5mu34ikqd7e7rgarkf2hhipicfriw4krmabkiusjhua3sh2oyi.ipfs.flk-ipfs.xyz/"))`
-Actual: `(ok (some u"https://bafkreicy5mu34ikqd7e7rgarkf2hhipicfriw4krmabkiusjhua3sh2oyi.ipfs.flk-ipfs.xyz/"))` ✅ PASS
+Expected: `(ok (some u""))`
+Actual: `(ok (some u""))` ✅ PASS
 
 ## Minting Tokens
 1. First mint tokens (as contract owner):
@@ -118,7 +118,7 @@ For 1,000,000 transfer:
 
 3. Test insufficient balance:
 ```clarity
-;; Attempt to transfer more than the sender's balance (including fee)
+;; Attempt to transfer more than the sender's balance
 (contract-call? .sburn transfer u5000000 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM 'ST2CY5V39NHDPWSXMW9QDT3HC3GD6Q6XX4CFRK9AG none)
 ```
 Expected: `(err u104)` (which represents the ERR_INSUFFICIENT_BALANCE error)
