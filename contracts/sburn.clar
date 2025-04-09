@@ -1,7 +1,8 @@
-;; sBurn Coin - SIP-010 implementation with automatic fee distribution
+;; sBurn Coin - SIP-010 implementation 
 ;; Written by Majen 
-;; Created: 2024
+;; Created: 2025
 
+;; Self-contained trait fully on-chain
 (impl-trait .trait-sip010.sip-010-trait)
 
 ;; Define the FT, with no maximum supply
@@ -12,14 +13,14 @@
 (define-constant ERR_INSUFFICIENT_TRANSFER (err u101))
 (define-constant ERR_NOT_TOKEN_OWNER (err u102))
 (define-constant ERR_INVALID_RECIPIENT (err u103))
-(define-constant ERR_INSUFFICIENT_BALANCE (err u104)) ;; New error for insufficient balance
+(define-constant ERR_INSUFFICIENT_BALANCE (err u104)) 
 
 ;; Define constants for contract
-(define-constant CONTRACT_OWNER 'ST1Y0JZ5NGPR6E2S5GGWN3XFJ9SZ6R8K4M0QQ1V8X) ;; Your first Leather wallet address
-(define-constant FEE_RECIPIENT 'ST1Y2465GZ3YNX9SA316W5SXSEQM21SBVPY3QNH1E) ;; Your second Leather wallet address
-(define-constant BURN_ADDRESS 'ST14B9EJ6KECBQ17G5D13BKAT5AE32AVNYTHTGV7R) ;; Your third Leather wallet address
+(define-constant CONTRACT_OWNER 'ST1Y0JZ5NGPR6E2S5GGWN3XFJ9SZ6R8K4M0QQ1V8X) ;; Your first wallet address
+(define-constant FEE_RECIPIENT 'ST1Y2465GZ3YNX9SA316W5SXSEQM21SBVPY3QNH1E) ;; Your second  wallet address
+(define-constant BURN_ADDRESS 'ST14B9EJ6KECBQ17G5D13BKAT5AE32AVNYTHTGV7R) ;; Your third  wallet address
 ;; Real burn address for mainnet: 'SP000000000000000000002Q6VF78
-(define-constant TOKEN_URI u"https://bafkreicy5mu34ikqd7e7rgarkf2hhipicfriw4krmabkiusjhua3sh2oyi.ipfs.flk-ipfs.xyz/")
+(define-constant TOKEN_URI u"")
 (define-constant TOKEN_NAME "sBurn")
 (define-constant TOKEN_SYMBOL "SBURN")
 (define-constant TOKEN_DECIMALS u6)
@@ -52,7 +53,7 @@
     (ok TOKEN_DECIMALS))
 
 (define-read-only (get-token-uri)
-    (ok (some TOKEN_URI)))
+    (ok (some u"")))
 
 ;; Mint function - Owner Only
 (define-public (mint (amount uint) (recipient principal))
@@ -66,11 +67,11 @@
         (fee (calculate-fee amount))
         (recipient-fee (/ fee u2))
         (burn-amount (- fee recipient-fee))
-        (transfer-amount (- amount fee))  ;; This is correct - recipient gets amount minus total fees
+        (transfer-amount (- amount fee))  ;; Recipient gets amount minus total fees
     )
-        ;; Ensure the sender has enough balance for the transfer + fee
+        ;; Ensure the sender has enough balance for the transfer
         (let ((sender-balance (ft-get-balance sBurn-coin sender)))
-            (asserts! (>= sender-balance (+ amount fee)) ERR_INSUFFICIENT_BALANCE)
+            (asserts! (>= sender-balance amount) ERR_INSUFFICIENT_BALANCE)
         )
         
         ;; Ensure transfer amount is above the minimum allowed
@@ -105,6 +106,25 @@
 
 (define-read-only (get-total-fees-collected)
     (ok (var-get total-fees-collected)))
+
+;; Functional on-chain metadata that leverages existing read-only functions
+(define-read-only (get-metadata)
+    (ok {
+        name: TOKEN_NAME,
+        symbol: TOKEN_SYMBOL,
+        decimals: TOKEN_DECIMALS,
+        description: "sBurn is a deflationary token on the Stacks blockchain that implements automatic fee distribution and burn mechanics. With every transfer, a small fee is collected where half is burned permanently and half is distributed to fee recipients, creating a continuously decreasing supply that adds value to long-term holders.",
+        properties: {
+            burn-rate: "0.125%",  
+            fee-rate: "0.25%",
+            min-transfer: "1000000"
+        },
+        stats: {
+            total-burned: (unwrap-panic (get-total-burned)),
+            total-fees: (unwrap-panic (get-total-fees-collected)),
+            effective-supply: (unwrap-panic (get-effective-supply))
+        }
+    }))
 
 
 
