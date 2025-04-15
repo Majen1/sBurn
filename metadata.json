@@ -1,12 +1,1 @@
-{
-    "name": "sBurn Token",
-    "symbol": "SBURN",
-    "decimals": 6,
-    "description": "sBurn is a deflationary token on the Stacks blockchain that implements automatic fee distribution and burn mechanics. With every transfer, a small fee is collected where half is burned permanently and half is distributed to fee recipients, creating a continuously decreasing supply that adds value to long-term holders.",
-    "image": "https://bafkreicy5mu34ikqd7e7rgarkf2hhipicfriw4krmabkiusjhua3sh2oyi.ipfs.flk-ipfs.xyz/",
-    "properties": {
-        "burn_rate": "0.125%",
-        "fee_rate": "0.25%",
-        "min_transfer": "1000000"
-    }
-}
+-
