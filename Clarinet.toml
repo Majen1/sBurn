@@ -1,5 +1,5 @@
 [project]
-name = "sburn"
+name = "sburn2"
 description = "A fungible token implementation following the SIP-010 standard"
 authors = ["Majen"]
 telemetry = false
@@ -13,8 +13,8 @@ path = "contracts/trait-sip010.clar"
 clarity_version = 2
 epoch = 3.0
 
-[contracts.sburn]
-path = "contracts/sburn.clar"
+[contracts.sburn2]
+path = "contracts/sburn2.clar"
 clarity_version = 2
 epoch = 3.0
 depends_on = ["trait-sip010"]
