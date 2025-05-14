@@ -1,40 +1,59 @@
 # 🔥 sBurn Token (SBURN)
 
-As a DeFi purist, I created this deflationary trading token on the Stacks blockchain that automatically burns tokens with every transaction, creating accelerated scarcity during high trading volumes - all 100% on-chain, no oracles needed.
+As a DeFi purist, I created this deflationary trading token on the Stacks blockchain that automatically burns tokens with every transaction, creating accelerated scarcity during high trading volumes. All 100% on-chain, no oracles needed.
 
 ## 💡 What is sBurn?
 
 I built sBurn because I believe in true decentralization. It's my attempt to create a trading token with algorithmic price discovery mechanisms that exist entirely on-chain, free from external data dependencies. 
 
-sBurn implements three powerful mechanisms on every transfer:
-- **Active Deflation**: The more it's traded, the more scarce it becomes 🔥
-- **Self-Sustaining Development**: Transaction fees support continued improvements
-- **Truly Fair Launch**: No initial supply was created, no coins pre-allocated to the developer before launch
 
-Unlike traditional tokens that start with developer allocations or pre-mined supplies, sBurn launched with zero tokens in circulation. This ensures:
-- **Complete Fairness**: Every token must be minted according to protocol rules with no hidden advantages
-- **Aligned Incentives**: Developers earn only through the same fee mechanism as the burn rate (0.125%)
-- **Community Ownership**: The project belongs to its users from day one, not to early insiders
-- **Genuine Scarcity**: Value is derived purely from market activity, not artificial limitations
+Unlike traditional tokens with unlimited minting capabilities, sBurn launched with a fixed supply of 18 million tokens in circulation. This ensures:
+- **Predictable Scarcity**: The maximum supply is known from day one, with continuous reduction through burns
+- **Aligned Incentives**: Developers earn through a carefully balanced fee mechanism (0.10%)
+- **Community Ownership**: The project encourages wide distribution through market activity
+- **Genuine Scarcity**: Value is derived from both fixed supply and deflationary mechanisms
 
-Unlike traditional tokens that lose value with increased supply or rely on oracles for price feeds, sBurn gains intrinsic value through market activity alone!
+Unlike traditional tokens that lose value with increased supply or rely on oracles for price feeds, sBurn gains intrinsic value through market activity and continuous token burns!
 
 ## ⚙️ How It Works
 
 Every time SBURN tokens change hands:
 1. A small 0.25% fee is collected from the transfer amount
-2. Half of that fee (0.125%) is **permanently burned** 🔥
-3. The other half (0.125%) is a developer fee to support ongoing project maintenance and growth
+2. 0.15% is **permanently burned** 🔥
+3. 0.1% goes to development to ensure long-term project sustainability
 4. The remaining 99.75% reaches its destination
 
 **The true power of sBurn emerges during high trading volume:**
 - With enough trading activity, the burn rate can overtake any new token minting
 - Each transaction increases the token's scarcity, creating a positive feedback loop
-- 1 million SBURN traded = 1,250 SBURN permanently removed
-- 10 million SBURN traded = 12,500 SBURN permanently removed
-- 100 million SBURN traded = 125,000 SBURN permanently removed
+- 1 million SBURN traded = 1,500 SBURN permanently removed
+- 10 million SBURN traded = 15,000 SBURN permanently removed
+- 100 million SBURN traded = 150,000 SBURN permanently removed
+
+## 🧩 All-On-Chain Metadata: A Commitment to Security
+
+As a DeFi purist, I've made the deliberate choice to store all token metadata on-chain, including:
+
+- **Token identity information**
+- **Burning mechanisms**
+- **Supply tracking**
+- **Ownership transfers**
+
+This approach offers concrete advantages:
+- **Immutable Record**: Token parameters cannot be manipulated off-chain
+- **Transparent Verification**: Anyone can audit the complete token history
+- **Protocol-Level Security**: Leverages blockchain's inherent security model
+- **Resilient Architecture**: Eliminates dependence on external metadata services
+
+While off-chain metadata might be more cost-efficient, true DeFi requires sacrificing convenience for security. sBurn embodies this philosophy by ensuring all critical data exists within the secure boundary of the blockchain itself.
+
 
 ## 🌟 Why Go 100% On-Chain?
+
+- **Sustainable Burn Rate**: A 0.15% burn creates meaningful scarcity without disrupting market liquidity
+- **Adequate Development Funding**: The 0.1% development fee ensures resources for:
+  - Smart contract audits
+  - Community building
 
 As a DeFi purist, I believe in building systems that:
 
@@ -92,21 +111,24 @@ sBurn's transparent, immutable smart contract means you don't need to trust deve
 ```
 Name: sBurn Token
 Symbol: SBURN
-Decimals: 6
+Decimals: 8
 Minimum Transfer: 1.0 SBURN
 Total Fee: 0.25% per transfer
-Burn Rate: 0.125% per transfer
-Maintenance Fee: 0.125% per transfer
+Burn Rate: 0.15% per transfer
+Development Fee: 0.1% per transfer
 ```
-
 
 ## 📊 Burn Impact Calculator
 
+The following calculations are based solely on trading volume, independent of total supply:
+
 | Daily Trading Volume | Daily Burn | Monthly Burn | Yearly Burn |
 |----------------------|------------|--------------|-------------|
-| 100,000 SBURN        | 125 SBURN  | 3,750 SBURN  | 45,625 SBURN |
-| 1,000,000 SBURN      | 1,250 SBURN | 37,500 SBURN | 456,250 SBURN |
-| 10,000,000 SBURN     | 12,500 SBURN | 375,000 SBURN | 4,562,500 SBURN |
+| 100,000 SBURN        | 150 SBURN  | 4,500 SBURN  | 54,750 SBURN |
+| 1,000,000 SBURN      | 1,500 SBURN | 45,000 SBURN | 547,500 SBURN |
+| 10,000,000 SBURN     | 15,000 SBURN | 450,000 SBURN | 5,475,000 SBURN |
+
+> **Note:** Contract address will be provided once deployed to testnet. Stay tuned for acquisition instructions.
 
 ## 📝 Use Cases
 
