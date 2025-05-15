@@ -22,9 +22,9 @@
 (define-constant ERR_METADATA_FAILURE (err u110))
 
 ;; Constants for contract
-(define-constant CONTRACT_OWNER 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM) ;; console address
-(define-constant FEE_RECIPIENT 'ST1SJ3DTE5DN7X54YDH5D64R3BCB6A2AG2ZQ8YPD5) ;; console address
-(define-constant BURN_ADDRESS 'ST3PF13W7Z0RRM42A8VZRVFQ75SV1K26RXEP8YGKJ) ;; console address
+(define-constant CONTRACT_OWNER 'ST1Y0JZ5NGPR6E2S5GGWN3XFJ9SZ6R8K4M0QQ1V8X) ;; testnet address 1
+(define-constant FEE_RECIPIENT 'ST1Y2465GZ3YNX9SA316W5SXSEQM21SBVPY3QNH1E) ;; testnet address 2
+(define-constant BURN_ADDRESS 'ST000000000000000000002AMW42H) ;; testnet burn address
 (define-constant TOKEN_URI u"")
 (define-constant TOKEN_NAME "sBurn2")
 (define-constant TOKEN_SYMBOL "SBURN2")
