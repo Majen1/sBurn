@@ -3,18 +3,36 @@ name = "sburn"
 description = "sBurn Token Implementation"
 authors = ["Majen"]
 telemetry = false
-requirements = [
-    "SP2PABAF9FTAJYNFZH93XENAJ8FVY99RRM50D2JG9.token-trait"
-]
+requirements = []
+costs_version = 2
+
+[contracts.trait-sip010]
+path = "contracts/trait-sip010.clar"
+clarity_version = 2
+epoch = 3.0
+
+[contracts.sburn]
+path = "contracts/sburn2.clar"
+clarity_version = 2
+epoch = 3.0
+depends_on = ["trait-sip010"]
+
+[contracts.sburn2]
+path = "contracts/sburn2.clar"
+clarity_version = 2
+epoch = 3.0
+depends_on = ["trait-sip010"]
 
 [network]
 name = "testnet"
 node_rpc_address = "https://stacks-node-api.testnet.stacks.co"
 
 [accounts.deployer]
-mnemonic = "Insert seedphrase here"
+# DO NOT put your actual mnemonic here in a public repo
+# Use environment variables or provide it only during deployment
+mnemonic = "REPLACE_DURING_DEPLOYMENT"
 
-[deployment]
-smart-contracts = ["sburn"]
-cost-estimator = "medium"
+[project.deployments]
+public_key = "03af3b86c9bfa2a75b63ee24d3d2c3a5b68e366360b989a5be71f86fa96adfb5f7"
+testnet = { plan = "./deployments/default.testnet-plan.yaml" }
 
