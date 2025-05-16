@@ -2,9 +2,7 @@
 ;; Written by Majen 
 ;; Created: 2025
 
-;; Self-contained trait fully on-chain
-(use-trait sip-010-trait .trait-sip010.sip-010-trait)
-(impl-trait .trait-sip010.sip-010-trait)
+(impl-trait 'ST1NXBK3K5YYMD6FD41MVNP3JS1GABZ8TRVX023PT.sip-010-trait-ft-standard)
 
 ;; FT with a maximum supply
 (define-fungible-token sBurn2-coin u1800000000000000) ;; 18 million tokens with 8 decimals
