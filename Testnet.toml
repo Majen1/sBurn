@@ -1,0 +1,33 @@
+[project]
+name = "sburn"
+description = "sBurn Token Implementation"
+authors = ["Majen"]
+telemetry = false
+costs_version = 2
+
+[[project.requirements]]
+contract_id = "ST1NXBK3K5YYMD6FD41MVNP3JS1GABZ8TRVX023PT.sip-010-trait-ft-standard"
+
+[contracts.sburn]
+path = "contracts/sburn.clar"
+clarity_version = 2
+epoch = "2.1"  # Changed from any invalid value to a supported value
+
+[network]
+name = "testnet"
+node_rpc_address = "https://stacks-node-api.testnet.stacks.co"
+
+[accounts.deployer]
+mnemonic = { env = "STACKS_DEPLOYER_MNEMONIC" }
+
+[project.deployments]
+public_key = "03af3b86c9bfa2a75b63ee24d3d2c3a5b68e366360b989a5be71f86fa96adfb5f7"
+testnet = { plan = "./deployments/new-testnet-plan.yaml" }
+
+[deployment]
+# Specify which contracts to deploy and their order for testnet
+# Since sip-010-trait-ft-standard is already on testnet, you only deploy sburn.
+deployer = "ST1D5T4V67KDJ96GA1BR5728AJ2HDBWZH63Y0WTXG" # Your Leather wallet address
+
+[[deployment.transactions]]
+contract_publish = "sburn" # Refers to [contracts.sburn] in Clarinet.toml
