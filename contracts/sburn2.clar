@@ -1,4 +1,4 @@
-;; sBurn2 Coin - SIP-010 implementation 
+;; sBurn Coin - SIP-010 implementation 
 ;; Written by Majen 
 ;; Created: 2025
 
@@ -6,7 +6,7 @@
 (impl-trait 'ST1NXBK3K5YYMD6FD41MVNP3JS1GABZ8TRVX023PT.sip-010-trait-ft-standard.sip-010-trait)
 
 ;; FT with a maximum supply
-(define-fungible-token sBurn2-coin u1800000000000000) ;; 18 million tokens with 8 decimals
+(define-fungible-token sBurn-coin u1800000000000000) ;; 18 million tokens with 8 decimals
 
 ;; Error Codes
 (define-constant ERR_INSUFFICIENT_TRANSFER (err u101))
@@ -21,12 +21,12 @@
 (define-constant ERR_METADATA_FAILURE (err u110))
 
 ;; Constants for contract
-(define-constant CONTRACT_OWNER 'ST1D5T4V67KDJ96GA1BR5728AJ2HDBWZH63Y0WTXG) ;; testnet address 1
-(define-constant FEE_RECIPIENT 'ST1Y2465GZ3YNX9SA316W5SXSEQM21SBVPY3QNH1E) ;; testnet address 2
+(define-constant CONTRACT_OWNER 'ST1D5T4V67KDJ96GA1BR5728AJ2HDBWZH63Y0WTXG) ;; Your Leather wallet address
+(define-constant FEE_RECIPIENT 'ST1Y2465GZ3YNX9SA316W5SXSEQM21SBVPY3QNH1E) ;; leather wallet address
 (define-constant BURN_ADDRESS 'ST000000000000000000002AMW42H) ;; testnet burn address
 (define-constant TOKEN_URI u"")
-(define-constant TOKEN_NAME "sBurn2")
-(define-constant TOKEN_SYMBOL "SBURN2")
+(define-constant TOKEN_NAME "sBurn")
+(define-constant TOKEN_SYMBOL "SBURN")
 (define-constant TOKEN_DECIMALS u8)
 (define-constant MAX_SUPPLY u1800000000000000) ;; 18 million with 8 decimals (like Bitcoin)
 (define-constant FEE_BASIS_POINTS u25) ;; 0.25% (25 basis points)
@@ -54,10 +54,10 @@
 
 ;; SIP-010 Functions
 (define-read-only (get-balance (account principal))
-    (ok (ft-get-balance sBurn2-coin account)))
+    (ok (ft-get-balance sBurn-coin account)))
 
 (define-read-only (get-total-supply)
-    (ok (ft-get-supply sBurn2-coin)))
+    (ok (ft-get-supply sBurn-coin)))
 
 (define-read-only (get-name)
     (ok TOKEN_NAME))
@@ -81,7 +81,7 @@
         (asserts! (is-eq contract-caller CONTRACT_OWNER) ERR_UNAUTHORIZED_MINTER)
         
         ;; Check that minting won't exceed max supply
-        (let ((current-supply (ft-get-supply sBurn2-coin))
+        (let ((current-supply (ft-get-supply sBurn-coin))
               (potential-new-supply (+ current-supply amount)))
             
             ;; Explicit overflow check
@@ -96,7 +96,7 @@
                 (var-set total-minted new-total-minted)
                 
                 ;; Mint the tokens directly to the caller
-                (ft-mint? sBurn2-coin amount tx-sender)
+                (ft-mint? sBurn-coin amount tx-sender)
             )
         )
     ))
@@ -115,7 +115,7 @@
         (asserts! (not (is-eq sender recipient)) ERR_SELF_TRANSFER)
         
         ;; Ensure the sender has enough balance for the transfer
-        (let ((sender-balance (ft-get-balance sBurn2-coin sender)))
+        (let ((sender-balance (ft-get-balance sBurn-coin sender)))
             (asserts! (>= sender-balance amount) ERR_INSUFFICIENT_BALANCE)
         )
         
@@ -131,11 +131,11 @@
         (asserts! (>= fee recipient-fee) ERR_ARITHMETIC_OVERFLOW)
         
         ;; First do the main transfer to recipient
-        (try! (ft-transfer? sBurn2-coin transfer-amount sender recipient))
+        (try! (ft-transfer? sBurn-coin transfer-amount sender recipient))
         ;; Then transfer fee portion to fee recipient
-        (try! (ft-transfer? sBurn2-coin recipient-fee sender FEE_RECIPIENT))
+        (try! (ft-transfer? sBurn-coin recipient-fee sender FEE_RECIPIENT))
         ;; Finally transfer burn amount to burn address
-        (try! (ft-transfer? sBurn2-coin burn-amount sender BURN_ADDRESS))
+        (try! (ft-transfer? sBurn-coin burn-amount sender BURN_ADDRESS))
         
         ;; Update total burned and total fees with overflow protection
         (let (
@@ -164,7 +164,7 @@
     (ok (/ (* FEE_BASIS_POINTS FEE_SPLIT_RATIO) u100)))
 
 (define-read-only (get-effective-supply)
-    (ok (- (ft-get-supply sBurn2-coin) (var-get total-burned))))
+    (ok (- (ft-get-supply sBurn-coin) (var-get total-burned))))
 
 (define-read-only (get-total-fees-collected)
     (ok (var-get total-fees-collected)))
@@ -185,7 +185,7 @@
         name: TOKEN_NAME,
         symbol: TOKEN_SYMBOL,
         decimals: TOKEN_DECIMALS,
-        description: "sBurn2 is a 100% on-chain deflationary token on the Stacks blockchain with a fixed maximum supply of 18 million tokens (with 8 decimal places). It implements automatic fee distribution and burn mechanics with no external dependencies. With every transfer, a small fee is collected where 0.15% is burned permanently and 0.1% is distributed to fee recipients, creating a continuously decreasing supply that adds value to long-term holders.",
+        description: "sBurn is a 100% on-chain deflationary token on the Stacks blockchain with a fixed maximum supply of 18 million tokens (with 8 decimal places). It implements automatic fee distribution and burn mechanics with no external dependencies. With every transfer, a small fee is collected where 0.15% is burned permanently and 0.1% is distributed to fee recipients, creating a continuously decreasing supply that adds value to long-term holders.",
         properties: {
             burn-rate: "0.15%",  
             fee-rate: "0.1%",
