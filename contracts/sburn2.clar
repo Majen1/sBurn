@@ -2,7 +2,8 @@
 ;; Written by Majen 
 ;; Created: 2025
 
-(impl-trait 'ST1NXBK3K5YYMD6FD41MVNP3JS1GABZ8TRVX023PT.sip-010-trait-ft-standard)
+(use-trait ft-trait 'ST1NXBK3K5YYMD6FD41MVNP3JS1GABZ8TRVX023PT.sip-010-trait-ft-standard.sip-010-trait)
+(impl-trait 'ST1NXBK3K5YYMD6FD41MVNP3JS1GABZ8TRVX023PT.sip-010-trait-ft-standard.sip-010-trait)
 
 ;; FT with a maximum supply
 (define-fungible-token sBurn2-coin u1800000000000000) ;; 18 million tokens with 8 decimals
@@ -20,7 +21,7 @@
 (define-constant ERR_METADATA_FAILURE (err u110))
 
 ;; Constants for contract
-(define-constant CONTRACT_OWNER 'ST1Y0JZ5NGPR6E2S5GGWN3XFJ9SZ6R8K4M0QQ1V8X) ;; testnet address 1
+(define-constant CONTRACT_OWNER 'ST1D5T4V67KDJ96GA1BR5728AJ2HDBWZH63Y0WTXG) ;; testnet address 1
 (define-constant FEE_RECIPIENT 'ST1Y2465GZ3YNX9SA316W5SXSEQM21SBVPY3QNH1E) ;; testnet address 2
 (define-constant BURN_ADDRESS 'ST000000000000000000002AMW42H) ;; testnet burn address
 (define-constant TOKEN_URI u"")
